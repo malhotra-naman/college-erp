@@ -49,30 +49,29 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <style>  
-  body  
-  {  
-    background-image:url("https://media-exp1.licdn.com/dms/image/C561BAQGLjJ0ZpqJ-JQ/company-background_10000/0/1519797201497?e=2147483647&v=beta&t=3E-Zdy6E9tsZ0Srq-jMS4ZNqHhHpl6hDolQTi_8mnBg");  
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-  }  
-  .fancy-btn{
-    background: none;
-    color: #ffa260;
-    border: 2px solid;
-    font-size: 1em;
-    transition: color 0.25s, border-color 0.25s,box-shadow 0.25s,transform 0.25s;
-  }
-  .fancy-btn:hover{
-    border-color: #f1ff5c;
-    color: white;
-    box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
-    transform: translateY(-0.25em);
-    cursor: pointer;
-  }
-</style>  
-
+  <style>
+    body {
+      background-image: url("https://media-exp1.licdn.com/dms/image/C561BAQGLjJ0ZpqJ-JQ/company-background_10000/0/1519797201497?e=2147483647&v=beta&t=3E-Zdy6E9tsZ0Srq-jMS4ZNqHhHpl6hDolQTi_8mnBg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    .fancy-btn {
+      background: none;
+      color: #ffa260;
+      border: 2px solid;
+      font-size: 1em;
+      transition: color 0.25s, border-color 0.25s, box-shadow 0.25s,
+        transform 0.25s;
+    }
+    .fancy-btn:hover {
+      border-color: #f1ff5c;
+      color: white;
+      box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+      transform: translateY(-0.25em);
+      cursor: pointer;
+    }
+  </style>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href=""><h3>WELCOME TO COLLEGE ERP</h3></a>
     <button
@@ -92,13 +91,16 @@
       <form class="form-inline my-2 my-lg-0">
         <a href="/login" class="btn fancy-btn my-1 mx-2">Login</a>
 
-        <a href="/registration" class="btn fancy-btn my-1 mx-2"
-          >Register</a
-        >
+        <a href="/registration" class="btn fancy-btn my-1 mx-2">Register</a>
       </form>
     </div>
   </nav>
-  <body ></body>
-  </html>
+  <body></body>
+  <footer class="bg-light text-center text-lg-start" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="text-center p-3 bg-dark">
+      © 2022 | Naman Malhotra 2K20/CO/288 | Mayank Kumar 2K20/CO/264
+    </div>
+  </footer>
+</html>
 
 {% endblock content %}
