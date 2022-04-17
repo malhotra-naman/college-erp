@@ -91,11 +91,26 @@
     .login-dark form .btn-primary:active {
       transform: translateY(1px);
     }
+    .fancy-btn {
+      background: none;
+      color: #ffa260;
+      border: 2px solid;
+      font-size: 1em;
+      transition: color 0.25s, border-color 0.25s, box-shadow 0.25s,
+        transform 0.25s;
+    }
+    .fancy-btn:hover {
+      border-color: #f1ff5c;
+      color: white;
+      box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+      transform: translateY(-0.25em);
+      cursor: pointer;
+    }
   </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/ ">
-    <h4>BACK TO HOME</h4>
+    <h4>Home</h4>
   </a>
   <button
     class="navbar-toggler"
@@ -111,18 +126,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"></ul>
     <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="login" placeholder="login" aria-label="login">-->
-      <!--<input class="form-control mr-sm-2" type="Register" placeholder="Register" aria-label="Register">-->
-      <a href="/login" class="btn btn-outline-success my-1 mx-2">Login Here</a>
-      <a href="/contact" class="btn btn-outline-danger my-1 mx-2">Contact Us</a>
-      <!--<input class="form-control mr-sm-2" type="register" placeholder="register" aria-label="register">-->
+      <a href="/login" class="btn fancy-btn my-1 mx-2">Login Here</a>
     </form>
   </div>
 </nav>
 <div class="login-dark form-inline py-0 mx-4 my-4 pl-4 pr-4">
   <form action="{% url 'doRegistration' %}" method="get">
     {% csrf_token %}
-    <h1 class="text-center">Signup</h1>
+    <h1 class="text-center">SignUp</h1>
     <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
     <div class="form-group">
       <input
