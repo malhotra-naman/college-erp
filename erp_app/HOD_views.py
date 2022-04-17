@@ -1,3 +1,4 @@
+from cmath import e
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib import messages
@@ -5,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import json
+import traceback
 
 from .forms import AddStudentForm, EditStudentForm
 
@@ -388,7 +390,7 @@ def add_student_save(request):
 				messages.success(request, "Student Added Successfully!")
 				return redirect('add_student')
 			except:
-				messages.error(request, "Failed to Add Student!")
+				messages.error(request, "Unable to add Student!")
 				return redirect('add_student')
 		else:
 			return redirect('add_student')

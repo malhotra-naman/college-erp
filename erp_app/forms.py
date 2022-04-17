@@ -56,6 +56,7 @@ class AddStudentForm(forms.Form):
 	course_id = forms.ChoiceField(label="Course",
 								choices=course_list,
 								widget=forms.Select(attrs={"class":"form-control"}))
+								
 	gender = forms.ChoiceField(label="Gender",
 							choices=gender_list,
 							widget=forms.Select(attrs={"class":"form-control"}))
