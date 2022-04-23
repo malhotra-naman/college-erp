@@ -330,7 +330,7 @@ def staff_profile_update(request):
 			staff.save()
 
 			messages.success(request, "Profile Updated Successfully")
-			return redirect('staff_profile')
+			return redirect('login')
 		except:
 			messages.error(request, "Failed to Update Profile")
 			return redirect('staff_profile')

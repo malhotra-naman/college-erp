@@ -795,6 +795,7 @@ def admin_profile_update(request):
 		password = request.POST.get('password')
 
 		try:
+			print(first_name)
 			customuser = CustomUser.objects.get(id=request.user.id)
 			customuser.first_name = first_name
 			customuser.last_name = last_name
@@ -802,7 +803,7 @@ def admin_profile_update(request):
 				customuser.set_password(password)
 			customuser.save()
 			messages.success(request, "Profile Updated Successfully")
-			return redirect('admin_profile')
+			return redirect('login')
 		except:
 			messages.error(request, "Failed to Update Profile")
 			return redirect('admin_profile')

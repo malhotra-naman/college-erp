@@ -33,12 +33,12 @@ def doLogin(request):
 	login(request, user)
 	print(request.user)
 
-	if user.user_type == CustomUser.STUDENT:
-		return redirect('student_home/')
+	if user.user_type == CustomUser.HOD:
+		return redirect('admin_home/')
 	elif user.user_type == CustomUser.STAFF:
 		return redirect('staff_home/')
-	elif user.user_type == CustomUser.HOD:
-		return redirect('admin_home/')
+	elif user.user_type == CustomUser.STUDENT:
+		return redirect('student_home/')
 
 	return render(request, 'home.html')
 

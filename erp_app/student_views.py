@@ -194,7 +194,7 @@ def student_profile_update(request):
 			student.save()
 			
 			messages.success(request, "Profile Updated Successfully")
-			return redirect('student_profile')
+			return redirect('login')
 		except:
 			messages.error(request, "Failed to Update Profile")
 			return redirect('student_profile')
