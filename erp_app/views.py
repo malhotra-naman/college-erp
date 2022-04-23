@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse, redirect,HttpResponseRedirect
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.hashers import make_password
 from .models import CustomUser, Staffs, Students, AdminHOD
 from django.contrib import messages
 
@@ -21,12 +22,14 @@ def doLogin(request):
 	if not (email_id and password):
 		messages.error(request, "Please provide all the details!!")
 		return render(request, 'login.html')
-
-	user = CustomUser.objects.filter(email=email_id, password=password).last()
+	user = CustomUser.objects.filter(email=email_id).last()
 	if not user:
 		messages.error(request, 'Invalid Login Credentials!!')
 		return render(request, 'login.html')
-
+	check_user = authenticate(request, username=user.username, password=password)
+	if not check_user:
+		messages.error(request, 'Invalid Login Credentials!!')
+		return render(request, 'login.html')
 	login(request, user)
 	print(request.user)
 
@@ -52,6 +55,15 @@ def doRegistration(request):
 	confirm_password = request.GET.get('confirmPassword')
 	user_type = CustomUser.EMAIL_TO_USER_TYPE_MAP[request.GET.get('user_type')]
 
+	hashed_password = make_password(password);
+
+	if password == confirm_password:
+		password = hashed_password
+		confirm_password = hashed_password
+	else:
+		messages.error(request, 'Both passwords should match!!')
+		return render(request, 'registration.html')
+
 	print(email_id)
 	print(password)
 	print(confirm_password)
@@ -59,10 +71,6 @@ def doRegistration(request):
 	print(last_name)
 	if not (email_id and password and confirm_password):
 		messages.error(request, 'Please provide all the details!!')
-		return render(request, 'registration.html')
-	
-	if password != confirm_password:
-		messages.error(request, 'Both passwords should match!!')
 		return render(request, 'registration.html')
 
 	is_user_exists = CustomUser.objects.filter(email=email_id).exists()
