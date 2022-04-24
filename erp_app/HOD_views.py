@@ -795,7 +795,6 @@ def admin_profile_update(request):
 		password = request.POST.get('password')
 
 		try:
-			print(first_name)
 			customuser = CustomUser.objects.get(id=request.user.id)
 			customuser.first_name = first_name
 			customuser.last_name = last_name

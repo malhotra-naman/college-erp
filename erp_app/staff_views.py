@@ -14,9 +14,7 @@ from .models import CustomUser, Staffs, Courses, Subjects, Students, SessionYear
 def staff_home(request):
 
 	# Fetching All Students under Staff
-	print(request.user.id)
 	subjects = Subjects.objects.filter(staff_id=request.user.id)
-	print(subjects)
 	course_id_list = []
 	for subject in subjects:
 		course = Courses.objects.get(id=subject.course_id.id)
@@ -28,18 +26,13 @@ def staff_home(request):
 		if course_id not in final_course:
 			final_course.append(course_id)
 			
-	print(final_course)
 	students_count = Students.objects.filter(course_id__in=final_course).count()
 	subject_count = subjects.count()
-	print(subject_count)
-	print(students_count)
 	
 	# Fetch All Attendance Count
 	attendance_count = Attendance.objects.filter(subject_id__in=subjects).count()
 	
 	# Fetch All Approve Leave
-	# print(request.user)
-	print(request.user.user_type)
 	staff = Staffs.objects.get(admin=request.user.id)
 	leave_count = LeaveReportStaff.objects.filter(staff_id=staff.id,
 												leave_status=1).count()
@@ -91,7 +84,6 @@ def staff_take_attendance(request):
 
 
 def staff_apply_leave(request):
-	print(request.user.id)
 	staff_obj = Staffs.objects.get(admin=request.user.id)
 	leave_data = LeaveReportStaff.objects.filter(staff_id=staff_obj)
 	context = {

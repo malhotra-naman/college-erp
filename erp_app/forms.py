@@ -34,7 +34,6 @@ class AddStudentForm(forms.Form):
 			single_course = (course.id, course.course_name)
 			course_list.append(single_course)
 	except:
-		print("here")
 		course_list = []
 	
 	#For Displaying Session Years

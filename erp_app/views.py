@@ -11,14 +11,8 @@ def loginUser(request):
 	return render(request, 'login.html')
 
 def doLogin(request):
-	
-	print("here")
 	email_id = request.GET.get('email')
 	password = request.GET.get('password')
-	# user_type = request.GET.get('user_type')
-	print(email_id)
-	print(password)
-	print(request.user)
 	if not (email_id and password):
 		messages.error(request, "Please provide all the details!!")
 		return render(request, 'login.html')
@@ -31,8 +25,6 @@ def doLogin(request):
 		messages.error(request, 'Invalid Login Credentials!!')
 		return render(request, 'login.html')
 	login(request, user)
-	print(request.user)
-
 	if user.user_type == CustomUser.HOD:
 		return redirect('admin_home/')
 	elif user.user_type == CustomUser.STAFF:
@@ -63,12 +55,6 @@ def doRegistration(request):
 	else:
 		messages.error(request, 'Both passwords should match!!')
 		return render(request, 'registration.html')
-
-	print(email_id)
-	print(password)
-	print(confirm_password)
-	print(first_name)
-	print(last_name)
 	if not (email_id and password and confirm_password):
 		messages.error(request, 'Please provide all the details!!')
 		return render(request, 'registration.html')
